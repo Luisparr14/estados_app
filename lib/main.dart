@@ -1,3 +1,5 @@
+import 'package:estados_app/screens/screen1.dart';
+import 'package:estados_app/screens/screen2.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -8,13 +10,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Componentes App',
-      home: Scaffold(
-        body: Center(
-          child: Container(
-            child: Text('Hola Mundo'),
-          ),
-        ),
-      ),
+      initialRoute: 'screen1',
+      routes: {
+        'screen1': (_) => const Screen1(),
+        'screen2': (_) => const Screen2()
+      },
     );
   }
 }
