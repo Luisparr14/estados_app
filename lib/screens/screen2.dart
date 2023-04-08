@@ -10,8 +10,15 @@ const Screen2({super.key});
         title: Text('Screen 2'),
       ),
       body: Center(
-        child: Text('Screen2')
-     ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MaterialButton(onPressed: ()=>{}, child: const Text('Set Name'), color: Colors.blue),
+            MaterialButton(onPressed: ()=>{}, child: const Text('Set Age'), color: Colors.blue),
+            MaterialButton(onPressed: ()=>{}, child: const Text('Set Profesion'), color: Colors.blue),
+          ],
+           ),
+      ),
    );
   }
 }
