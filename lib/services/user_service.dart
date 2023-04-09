@@ -6,20 +6,21 @@ class _UserService {
   late User _user;
   User get user => _user;
 
-  final StreamController<User> _userSteamController = StreamController<User>();
+  final StreamController<User> userSteamController =
+      StreamController<User>.broadcast();
 
-  Stream<User> get userStream => _userSteamController.stream;
+  Stream<User> get userStream => userSteamController.stream;
 
-  bool get userExist => _userSteamController.hasListener;
+  bool get userExist => userSteamController.hasListener;
 
   void setUser(User user) {
     _user = user;
-    _userSteamController.add(user);
+    userSteamController.add(user);
   }
 
   void setAge(int age) {
     _user.age = age;
-    _userSteamController.add(_user);
+    userSteamController.add(_user);
   }
 }
 
