@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:estados_app/models/user.dart';
 import 'package:estados_app/services/user_service.dart';
-import 'package:flutter/material.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({super.key});
@@ -10,11 +11,14 @@ class Screen1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Screen 1'),
       ),
-      body: userService.userExist
-          ? UserInfomation(user: userService.user)
-          : const Center(
-              child: Text('User Doesnt existe'),
-            ),
+      body: StreamBuilder(
+        stream: userService.userStream,
+        builder: (context, AsyncSnapshot<User> snapshot) {
+          return snapshot.hasData
+              ? UserInfomation(user: userService.user)
+              : const Center(child: Text('Info doest exist'));
+        },
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, 'screen2'),
           child: const Icon(Icons.ac_unit)),
@@ -26,7 +30,8 @@ class UserInfomation extends StatelessWidget {
   final User? user;
 
   const UserInfomation({
-    super.key, required this.user,
+    super.key,
+    required this.user,
   });
 
   @override

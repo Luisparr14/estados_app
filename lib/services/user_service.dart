@@ -1,18 +1,25 @@
+import 'dart:async';
+
 import 'package:estados_app/models/user.dart';
 
 class _UserService {
-  User? _user;
+  late User _user;
+  User get user => _user;
 
-  User? get user => _user;
+  final StreamController<User> _userSteamController = StreamController<User>();
 
-  bool get userExist => _user != null;
+  Stream<User> get userStream => _userSteamController.stream;
+
+  bool get userExist => _userSteamController.hasListener;
 
   void setUser(User user) {
     _user = user;
+    _userSteamController.add(user);
   }
 
   void setAge(int age) {
-    _user?.age = age;
+    _user.age = age;
+    _userSteamController.add(_user);
   }
 }
 
