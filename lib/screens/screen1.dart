@@ -1,4 +1,6 @@
+import 'package:estados_app/bloc/user_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({super.key});
@@ -8,7 +10,17 @@ class Screen1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Screen 1'),
       ),
-      body: const UserInfomation(),
+      body: BlocBuilder<UserCubit, UserState>(
+        builder: (_, state) {
+          if (state is InitialUser) {
+            return const Center(
+              child: Text('User Destn exists'),
+            );
+          } else {
+            return const UserInfomation();
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, 'screen2'),
           child: const Icon(Icons.ac_unit)),
@@ -30,11 +42,13 @@ class UserInfomation extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('General', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          Text('General',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           Divider(),
           ListTile(title: Text('Nombre')),
           ListTile(title: Text('Edad')),
-          Text('Profesiones', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          Text('Profesiones',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           Divider(),
           ListTile(title: Text('Profesion')),
           ListTile(title: Text('Profesion')),
