@@ -21,7 +21,7 @@ class Screen2 extends StatelessWidget {
           children: [
             MaterialButton(
                 onPressed: () {
-                  User user = User(name: 'Luis', age: 34, professions: []);
+                  User user = User(name: 'Luis', age: 34, professions: ['back', 'full']);
                   userService.setUser(user);
                 },
                 color: Colors.blue,
@@ -33,9 +33,9 @@ class Screen2 extends StatelessWidget {
                 color: Colors.blue,
                 child: const Text('Set Age')),
             MaterialButton(
-                onPressed: () => {},
+                onPressed: () => userService.addPrefesion(),
                 color: Colors.blue,
-                child: const Text('Set Profesion')),
+                child: const Text('Add Profesion')),
           ],
         ),
       ),

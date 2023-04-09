@@ -12,7 +12,11 @@ class Screen1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Screen 1'),
-        actions: [IconButton(onPressed: () => userService.deleteUser(), icon: const Icon(Icons.logout))],
+        actions: [
+          IconButton(
+              onPressed: () => userService.deleteUser(),
+              icon: const Icon(Icons.logout))
+        ],
       ),
       body: userService.userExist
           ? UserInfomation(user: userService.getUser as User)
@@ -49,8 +53,9 @@ class UserInfomation extends StatelessWidget {
           const Text('Profesiones',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const Divider(),
-          const ListTile(title: Text('Profesion')),
-          const ListTile(title: Text('Profesion')),
+          ...user.professions
+              .map((profesion) => ListTile(title: Text(profesion)))
+              .toList()
         ],
       ),
     );
