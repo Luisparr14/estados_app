@@ -1,3 +1,4 @@
+import 'package:estados_app/services/user_service.dart';
 import 'package:flutter/material.dart';
 
 class Screen1 extends StatelessWidget {
@@ -8,7 +9,7 @@ class Screen1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Screen 1'),
       ),
-      body: const UserInfomation(),
+      body: userService.userExist ? const UserInfomation() : const Center(child: Text('User Doesnt existe'),),
       floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, 'screen2'),
           child: const Icon(Icons.ac_unit)),
