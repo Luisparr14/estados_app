@@ -10,6 +10,10 @@ class _UserService {
   void setUser(User user) {
     _user = user;
   }
+
+  void setAge(int age) {
+    _user?.age = age;
+  }
 }
 
 final userService = _UserService();
