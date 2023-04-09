@@ -12,6 +12,7 @@ class Screen1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Screen 1'),
+        actions: [IconButton(onPressed: () => userService.deleteUser(), icon: const Icon(Icons.logout))],
       ),
       body: userService.userExist
           ? UserInfomation(user: userService.getUser as User)
@@ -27,7 +28,8 @@ class UserInfomation extends StatelessWidget {
   final User user;
 
   const UserInfomation({
-    super.key, required this.user,
+    super.key,
+    required this.user,
   });
 
   @override

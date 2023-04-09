@@ -12,4 +12,14 @@ class UserService with ChangeNotifier {
     _user = user;
     notifyListeners();
   }
+
+  void setAge(int age) {
+    _user?.age = age;
+    notifyListeners();
+  }
+
+  void deleteUser() {
+    _user = null;
+    notifyListeners();
+  }
 }
