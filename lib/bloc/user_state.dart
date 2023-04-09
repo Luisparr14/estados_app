@@ -4,5 +4,12 @@ part of 'user_cubit.dart';
 abstract class UserState {}
 
 class InitialUser extends UserState {
-  final userExiste = false;
+  final userExist = false;
+}
+
+class ActiveUser implements UserState {
+  final userExist = true;
+  final User user;
+
+  ActiveUser(this.user);
 }
