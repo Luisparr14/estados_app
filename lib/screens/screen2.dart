@@ -13,7 +13,7 @@ const Screen2({super.key});
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MaterialButton(onPressed: ()=>{}, child: const Text('Set Name'), color: Colors.blue),
+            MaterialButton(onPressed: ()=>{}, child: const Text('Set User'), color: Colors.blue),
             MaterialButton(onPressed: ()=>{}, child: const Text('Set Age'), color: Colors.blue),
             MaterialButton(onPressed: ()=>{}, child: const Text('Set Profesion'), color: Colors.blue),
           ],
