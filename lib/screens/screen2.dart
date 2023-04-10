@@ -30,7 +30,9 @@ class Screen2 extends StatelessWidget {
                 color: Colors.blue,
                 child: const Text('Set Age')),
             MaterialButton(
-                onPressed: () => {},
+                onPressed: () {
+                  userCubit.addProfesion('a');
+                },
                 color: Colors.blue,
                 child: const Text('Set Profesion')),
           ],

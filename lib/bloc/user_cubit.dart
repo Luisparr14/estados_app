@@ -19,4 +19,13 @@ class UserCubit extends Cubit<UserState> {
       emit(ActiveUser(newUser));
     }
   }
+
+  void addProfesion(String profesion) {
+    final currentState = state;
+    if (currentState is ActiveUser) {
+      final newProfessions = [...currentState.user.professions, profesion];
+      final newUser = currentState.user.copyWith(professions: newProfessions);
+      emit(ActiveUser(newUser));
+    }
+  }
 }
