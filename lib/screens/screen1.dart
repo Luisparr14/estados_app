@@ -1,3 +1,4 @@
+import 'package:estados_app/controller/user_controller.dart';
 import 'package:estados_app/screens/screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,17 +7,34 @@ class Screen1 extends StatelessWidget {
   const Screen1({super.key});
   @override
   Widget build(BuildContext context) {
+    final userCrtl = Get.put(UserController());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Screen 1'),
       ),
-      body: const UserInfomation(),
+      body: Obx(() {
+        return userCrtl.userExist.value
+            ? const UserInfomation()
+            : const NoInfo();
+      }),
       floatingActionButton: FloatingActionButton(
           // onPressed: () => Navigator.pushNamed(context, 'screen2'),
-          onPressed: () => Get.to(const Screen2(), arguments: {
-            "Name": "Luis"
-          }),
+          onPressed: () => Get.to(const Screen2(), arguments: {"Name": "Luis"}),
           child: const Icon(Icons.ac_unit)),
+    );
+  }
+}
+
+class NoInfo extends StatelessWidget {
+  const NoInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      child: Center(
+        child: Text('There are not user info'),
+      ),
     );
   }
 }
@@ -35,11 +53,13 @@ class UserInfomation extends StatelessWidget {
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('General', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          Text('General',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           Divider(),
           ListTile(title: Text('Nombre')),
           ListTile(title: Text('Edad')),
-          Text('Profesiones', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          Text('Profesiones',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           Divider(),
           ListTile(title: Text('Profesion')),
           ListTile(title: Text('Profesion')),
