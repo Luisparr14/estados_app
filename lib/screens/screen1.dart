@@ -1,4 +1,6 @@
+import 'package:estados_app/screens/screen2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({super.key});
@@ -10,7 +12,10 @@ class Screen1 extends StatelessWidget {
       ),
       body: const UserInfomation(),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, 'screen2'),
+          // onPressed: () => Navigator.pushNamed(context, 'screen2'),
+          onPressed: () => Get.to(const Screen2(), arguments: {
+            "Name": "Luis"
+          }),
           child: const Icon(Icons.ac_unit)),
     );
   }
