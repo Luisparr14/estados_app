@@ -1,7 +1,9 @@
-import 'package:estados_app/controller/user_controller.dart';
-import 'package:estados_app/screens/screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:estados_app/controller/user_controller.dart';
+import 'package:estados_app/models/user.dart';
+import 'package:estados_app/screens/screen2.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({super.key});
@@ -15,7 +17,7 @@ class Screen1 extends StatelessWidget {
       ),
       body: Obx(() {
         return userCrtl.userExist.value
-            ? const UserInfomation()
+            ? UserInfomation(user: userCrtl.user.value)
             : const NoInfo();
       }),
       floatingActionButton: FloatingActionButton(
@@ -40,8 +42,11 @@ class NoInfo extends StatelessWidget {
 }
 
 class UserInfomation extends StatelessWidget {
+  final User user;
+
   const UserInfomation({
     super.key,
+    required this.user,
   });
 
   @override
@@ -50,19 +55,19 @@ class UserInfomation extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       padding: const EdgeInsets.all(9),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('General',
+          const Text('General',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-          Divider(),
-          ListTile(title: Text('Nombre')),
-          ListTile(title: Text('Edad')),
-          Text('Profesiones',
+          const Divider(),
+          ListTile(title: Text('Nombre: ${user.name}')),
+          ListTile(title: Text('Edad: ${user.age}')),
+          const Text('Profesiones',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-          Divider(),
-          ListTile(title: Text('Profesion')),
-          ListTile(title: Text('Profesion')),
+          const Divider(),
+          const ListTile(title: Text('Profesion')),
+          const ListTile(title: Text('Profesion')),
         ],
       ),
     );
