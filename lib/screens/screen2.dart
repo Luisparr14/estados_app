@@ -28,7 +28,7 @@ class Screen2 extends StatelessWidget {
                 color: Colors.blue,
                 child: const Text('Set Age')),
             MaterialButton(
-                onPressed: () => {},
+                onPressed: () => userCrtl.addProfession('Full Stack'),
                 color: Colors.blue,
                 child: const Text('Set Profesion')),
           ],
